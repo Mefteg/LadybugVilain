@@ -36,6 +36,7 @@ public class LadybugVilain implements ApplicationListener {
 		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
 		
 		GameObject go = new GameObject();
+		GameObject go2 = new GameObject();
 	}
 
 	@Override
