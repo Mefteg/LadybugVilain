@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" combineaccessrules="false" path="/LadybugVilain"/>
-	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/LadybugVilain"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/LadybugVilain/libs/gdx.jar" sourcepath="/LadybugVilain/libs/gdx-sources.jar"/>
@@ -13,4 +12,6 @@
 	<classpathentry kind="lib" path="/LadybugVilain/libs/bodyeditor-loader-sources.jar"/>
 	<classpathentry kind="lib" path="/LadybugVilain/libs/tween-engine-api.jar" sourcepath="/LadybugVilain/libs/tween-engine-api-sources.jar"/>
 	<classpathentry kind="lib" path="/LadybugVilain/libs/tween-engine-api-sources.jar"/>
+	<classpathentry kind="lib" path="/LadybugVilain/libs/ladybug-engine.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
