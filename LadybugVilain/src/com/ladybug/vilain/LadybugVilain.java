@@ -1,5 +1,7 @@
 package com.ladybug.vilain;
 
+import cam.ladybug.script.PlayerScript;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
@@ -27,6 +29,7 @@ public class LadybugVilain extends Game2D {
 		this.addScene(scene);
 		
 		GameObject go = new GameObject("Player");
+		go.addComponent(new PlayerScript());
 		scene.addObject(go);
 	}
 }
