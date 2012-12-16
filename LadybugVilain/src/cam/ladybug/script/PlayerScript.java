@@ -3,6 +3,9 @@ package cam.ladybug.script;
 import com.ladybug.engine.components.Script;
 
 public class PlayerScript extends Script {
+	public static enum STATE {
+		IDLE, MOVE, JUMP
+	}
 
 	public PlayerScript() {
 		super();
