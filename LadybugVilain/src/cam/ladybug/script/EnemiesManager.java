@@ -11,10 +11,13 @@ public class EnemiesManager extends Script {
 	
 	//MARIOS
 	ArrayList<Enemies> m_marios;
-	int marioCount, marioDelay = 100;
+	int marioCount, marioDelay = 160;
 	//LUIGIS
 	ArrayList<Enemies> m_luigis;
-	int luigiCount, luigiDelay = 100;
+	int luigiCount, luigiDelay = 200;
+	
+	int count = 0;
+	int luigiFirst = 120;
 	
 	Scene m_scene;
 	
@@ -26,6 +29,7 @@ public class EnemiesManager extends Script {
 	
 	@Override
 	public void update(){
+		count++;
 		//MARIOS MANAGEMENT
 		marioCount ++;
 		if(marioCount > marioDelay){
@@ -34,10 +38,17 @@ public class EnemiesManager extends Script {
 		}
 		
 		//LUIGI MANAGEMENT
-		luigiCount ++;
-		if(luigiCount > luigiDelay){
-			luigiCount = 0;
-			m_luigis.get(getFreeEnemy(m_luigis)).pop(0, 100);
+		if(count > luigiFirst){
+			luigiCount ++;
+			if(luigiCount > luigiDelay){
+				luigiCount = 0;
+				m_luigis.get(getFreeEnemy(m_luigis)).pop(0, 100);
+			}
+		}
+		
+		if(count == 200){
+			luigiDelay -= 20;
+			marioDelay -= 10;
 		}
 	}
 	
@@ -46,7 +57,7 @@ public class EnemiesManager extends Script {
 		for(int i=0; i<10; i++){
 			//MARIOS
 			GameObject mario = new GameObject(-1000,100,"data/mario.png",24,24,"Mario");
-			mario.addComponent(new BoxCollider(24,24));
+			mario.addComponent(new BoxCollider(20,20));
 			Mario e = new Mario();
 			mario.addComponent(e);
 			m_marios.add(e);
@@ -60,7 +71,7 @@ public class EnemiesManager extends Script {
 		for(int i=0; i<10; i++){
 			//MARIOS
 			GameObject luigi = new GameObject(-1000,100,"data/luigi.png",24,24,"Luigi");
-			luigi.addComponent(new BoxCollider(24,24));
+			luigi.addComponent(new BoxCollider(20,20));
 			Luigi e = new Luigi();
 			luigi.addComponent(e);
 			m_luigis.add(e);

@@ -70,11 +70,11 @@ public class LadybugVilain extends Game2D {
 		
 		ArrayList<FireScript> bullets = new ArrayList<FireScript>();
 		//create fire bullets
-		for(int i=0; i < 4; i++){
+		for(int i=0; i < 13; i++){
 			GameObject fire = new GameObject(0,0,"data/fire.png",32,16,"FireBullet");
 			FireScript fs = new FireScript();
 			fire.addComponent(fs);
-			fire.addComponent(new BoxCollider(24,10));
+			fire.addComponent(new BoxCollider(16,8));
 			bullets.add(fs);
 			scene.addObject(fire);
 		}

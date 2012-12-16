@@ -3,6 +3,7 @@ package cam.ladybug.script;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.ladybug.engine.components.BoxCollider;
 import com.ladybug.engine.components.Collider;
 import com.ladybug.engine.components.Rigidbody;
@@ -11,15 +12,18 @@ import com.ladybug.engine.game.LayerManager;
 import com.ladybug.engine.gameobject.GameObject;
 
 public class PlayerScript extends Script {
+	
+	public static PlayerScript instance;
 
 	float jumpForce = 3;
 	ArrayList<FireScript> m_fsList;
 	
 	int m_countFire = 0;
-	int m_delayFire = 50;
+	int m_delayFire = 40;
 
 	public PlayerScript() {
 		super();
+		instance = this;
 	}
 	
 	@Override
@@ -38,6 +42,9 @@ public class PlayerScript extends Script {
 	@Override
 	public void update(){
 		m_countFire ++;
+		if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+			jump();
+		}
 		//input
 		if(Gdx.input.justTouched() && m_countFire >= m_delayFire){
 			//jump();
@@ -64,6 +71,14 @@ public class PlayerScript extends Script {
 				return i;
 		}
 		return 0;
+	}
+	
+	public void killBullet(GameObject go){
+		for(int i=0; i< m_fsList.size(); i++){
+			if(m_fsList.get(i).getObject().equals(go)){
+				m_fsList.get(i).kill();
+			}
+		}
 	}
 	
 	@Override

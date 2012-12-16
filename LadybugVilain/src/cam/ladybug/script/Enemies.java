@@ -5,6 +5,7 @@ import com.ladybug.engine.components.Collider;
 import com.ladybug.engine.components.Rigidbody;
 import com.ladybug.engine.components.Script;
 import com.ladybug.engine.game.LayerManager;
+import com.ladybug.vilain.GlobalVilain;
 
 public class Enemies extends Script {
 
@@ -36,6 +37,7 @@ public class Enemies extends Script {
 	}
 	
 	public void die(){
+		GlobalVilain.SCORE += 10;
 		getRigidbody().setVelocity(new Vector2());	
 		touched = false;
 		dead = true;
@@ -69,6 +71,7 @@ public class Enemies extends Script {
 			getObject().rigidbody.setAcceleration(-1);
 			getCollider().enabled = false;
 			touched = true;
+			PlayerScript.instance.killBullet(other.getObject());
 		}
 	}
 

@@ -26,6 +26,12 @@ public class FireScript extends Script {
 		return ready;
 	}
 	
+	public void kill(){
+		getObject().setPosition(-1000,0);
+		getRigidbody().setVelocity(new Vector2(0,0));
+		ready = true;
+	}
+	
 	@Override
 	public void update(){
 		if(this.getObject().getX() < -10){
