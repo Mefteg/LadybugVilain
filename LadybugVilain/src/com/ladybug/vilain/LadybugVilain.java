@@ -47,16 +47,16 @@ public class LadybugVilain extends Game2D {
 		super();
 		
 		this.WIDTH = 340;
-		this.HEIGHT = 200;
+		this.HEIGHT = 220;
 		
 		Scene scene = new Scene();
 		scene.WIDTH = 340;
-		scene.HEIGHT = 200;
+		scene.HEIGHT = 220;
 		
 		this.addScene(scene);
 		
 		//background image
-		GameObject bg = new GameObject(0,0,"data/bg.png",340,200,"BG");
+		GameObject bg = new GameObject(0,0,"data/bg.png", this.WIDTH, this.HEIGHT,"BG");
 		scene.addObject(bg);
 		//collider on ground
 		GameObject ground = new GameObject(0,20,"Ground");
@@ -121,7 +121,8 @@ public class LadybugVilain extends Game2D {
 	}
 	
 	public void update() {
-		m_score.setText("Score : " + String.valueOf(10));
-		m_table.debug();
+		int score = (int) GlobalVilain.SCORE;
+		m_score.setText("Score : " + String.valueOf(score));
+		//m_table.debug();
 	}
 }
