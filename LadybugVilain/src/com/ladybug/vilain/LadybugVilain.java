@@ -3,6 +3,7 @@ package com.ladybug.vilain;
 import java.util.ArrayList;
 
 import cam.ladybug.script.Enemies;
+import cam.ladybug.script.EnemiesManager;
 import cam.ladybug.script.FireScript;
 import cam.ladybug.script.PlayerScript;
 
@@ -58,7 +59,7 @@ public class LadybugVilain extends Game2D {
 			GameObject fire = new GameObject(0,0,"data/fire.png",32,16,"FireBullet");
 			FireScript fs = new FireScript();
 			fire.addComponent(fs);
-			fire.addComponent(new BoxCollider(32,16));
+			fire.addComponent(new BoxCollider(24,10));
 			bullets.add(fs);
 			scene.addObject(fire);
 		}
@@ -66,10 +67,8 @@ public class LadybugVilain extends Game2D {
 		go.addComponent(ps);
 		scene.addObject(go);
 		
-		//MARIOS
-		GameObject mario = new GameObject(0,100,"data/mario.png",24,24,"Mario");
-		mario.addComponent(new BoxCollider(24,24));
-		mario.addComponent(new Enemies());
-		scene.addObject(mario);
+		GameObject manager = new GameObject();
+		manager.addComponent(new EnemiesManager(scene));
+		scene.addObject(manager);
 	}
 }

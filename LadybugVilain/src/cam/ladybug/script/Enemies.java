@@ -8,18 +8,46 @@ import com.ladybug.engine.game.LayerManager;
 
 public class Enemies extends Script {
 
-	float jumpForce = 3;
-	boolean touched = false;
+	protected float jumpForce = 3;
+	protected boolean touched = false;
+	protected boolean dead = true;
+	
+	protected float m_velocity = 0.5f;
 	
 	@Override 
 	public void awake(){
 		m_object.addComponent(new Rigidbody());
-		getRenderer().setFrame(0,0);
-		getRigidbody().setVelocity(new Vector2(0.5f,0.0f));
+	}
+	
+	@Override
+	public void update(){
+		if(touched && getObject().getY() < 0){
+			die();
+		}
 	}
 	
 	public void pop(float _x, float _y){
-		
+		getObject().setPosition(_x, _y);
+		getRenderer().setFrame(0,0);
+		getRigidbody().setVelocity(new Vector2(m_velocity,0.0f));	
+		getCollider().enabled = true;
+		touched = false;
+		dead = false;
+	}
+	
+	public void die(){
+		getRigidbody().setVelocity(new Vector2());	
+		touched = false;
+		dead = true;
+		getObject().setPosition(-1000, -1000);
+	}
+	
+	public void setDead(boolean a_dead){
+		dead = a_dead;
+	}
+	
+	public boolean isDead(){
+		return dead;
 	}
 	
 	public void jump(){
@@ -31,7 +59,7 @@ public class Enemies extends Script {
 		
 	@Override
 	public void OnCollisionEnter(Collider other){
-		if(other.LAYER == LayerManager.GROUND && !touched){
+		if(other.LAYER == LayerManager.GROUND ){
 			getRigidbody().m_onGround = true;
 			jump();
 		}
