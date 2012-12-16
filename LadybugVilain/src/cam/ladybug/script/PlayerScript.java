@@ -14,6 +14,9 @@ public class PlayerScript extends Script {
 
 	float jumpForce = 3;
 	ArrayList<FireScript> m_fsList;
+	
+	int m_countFire = 0;
+	int m_delayFire = 50;
 
 	public PlayerScript() {
 		super();
@@ -34,10 +37,12 @@ public class PlayerScript extends Script {
 
 	@Override
 	public void update(){
+		m_countFire ++;
 		//input
-		if(Gdx.input.justTouched()){
+		if(Gdx.input.justTouched() && m_countFire >= m_delayFire){
 			//jump();
 			m_fsList.get(getBullet()).shoot(getObject().getX()-16, getObject().getY()+20);
+			m_countFire = 0;
 		}
 		
 	}

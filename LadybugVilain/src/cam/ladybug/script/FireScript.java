@@ -28,8 +28,9 @@ public class FireScript extends Script {
 	
 	@Override
 	public void update(){
-		if(this.getObject().getX() < -10)
+		if(this.getObject().getX() < -10){
 			ready = true;
+		}
 	}
 
 }
