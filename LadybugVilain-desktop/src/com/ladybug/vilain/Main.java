@@ -8,8 +8,8 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "LadybugVilain";
 		cfg.useGL20 = false;
-		cfg.width = 480;
-		cfg.height = 320;
+		cfg.width = 340;
+		cfg.height = 200;
 		
 		new LwjglApplication(new LadybugVilain(), cfg);
 	}
