@@ -24,11 +24,21 @@ public class LadybugVilain extends Game2D {
 	public LadybugVilain() {
 		super();
 		
+		this.WIDTH = 340;
+		this.HEIGHT = 200;
+		
 		Scene scene = new Scene();
+		scene.WIDTH = 340;
+		scene.HEIGHT = 200;
 		
 		this.addScene(scene);
 		
-		GameObject go = new GameObject("Player");
+		//background image
+		GameObject bg = new GameObject(0,0,"data/bg.png",340,200,"BG");
+		scene.addObject(bg);
+		
+		
+		GameObject go = new GameObject(0,0,"data/smb_enemies_sheet.png",32,32,"Player");
 		go.addComponent(new PlayerScript());
 		scene.addObject(go);
 	}

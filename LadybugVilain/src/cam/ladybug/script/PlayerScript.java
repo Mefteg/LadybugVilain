@@ -12,9 +12,6 @@ public class PlayerScript extends Script {
 	public void start() {
 		super.start();
 		
-		this.getObject().m_textureName = "data/smb_enemies_sheet.png";
-		this.getObject().m_textureWidth = 32;
-		this.getObject().m_textureHeight = 32;
 	}
 
 }
