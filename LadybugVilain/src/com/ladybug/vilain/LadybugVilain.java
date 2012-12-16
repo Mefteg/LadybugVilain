@@ -1,13 +1,10 @@
 package com.ladybug.vilain;
 
-<<<<<<< HEAD
-import cam.ladybug.script.ObstacleScript;
-=======
+import java.awt.Color;
 import java.util.ArrayList;
 
 import cam.ladybug.script.Enemies;
 import cam.ladybug.script.FireScript;
->>>>>>> 6bdafe79b1f997d918d7f56b14cd1cf157cd2e8d
 import cam.ladybug.script.PlayerScript;
 
 import com.badlogic.gdx.ApplicationListener;
@@ -16,16 +13,20 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.esotericsoftware.tablelayout.Cell;
 import com.ladybug.engine.components.BoxCollider;
-<<<<<<< HEAD
-import com.ladybug.engine.components.Collider;
-import com.ladybug.engine.components.Rigidbody;
-=======
->>>>>>> 6bdafe79b1f997d918d7f56b14cd1cf157cd2e8d
 import com.ladybug.engine.game.Game2D;
+import com.ladybug.engine.game.Global;
 import com.ladybug.engine.game.LayerManager;
 import com.ladybug.engine.game.Scene;
 import com.ladybug.engine.gameobject.GameObject;
@@ -35,6 +36,11 @@ public class LadybugVilain extends Game2D {
 	private SpriteBatch batch;
 	private Texture texture;
 	private Sprite sprite;
+	
+	protected Stage m_stage;
+	protected Table m_table;
+	protected Label m_score;
+	protected Cell m_scoreCell;
 	
 	public LadybugVilain() {
 		super();
@@ -48,21 +54,6 @@ public class LadybugVilain extends Game2D {
 		
 		this.addScene(scene);
 		
-<<<<<<< HEAD
-		GameObject go = new GameObject("Player");
-		go.addComponent(new Rigidbody());
-		go.addComponent(new BoxCollider(32, 32));
-		go.addComponent(new PlayerScript());
-		go.setPosition(30, 60);
-		scene.addObject(go);
-		
-		GameObject bridge = new GameObject("Player");
-		bridge.addComponent(new Rigidbody());
-		bridge.addComponent(new BoxCollider(128, 32));
-		bridge.addComponent(new ObstacleScript());
-		bridge.setPosition(0, 0);
-		scene.addObject(bridge);
-=======
 		//background image
 		GameObject bg = new GameObject(0,0,"data/bg.png",340,200,"BG");
 		scene.addObject(bg);
@@ -95,6 +86,43 @@ public class LadybugVilain extends Game2D {
 		mario.addComponent(new BoxCollider(24,24));
 		mario.addComponent(new Enemies());
 		scene.addObject(mario);
->>>>>>> 6bdafe79b1f997d918d7f56b14cd1cf157cd2e8d
+	}
+	
+	@Override
+	public void create() {
+		super.create();
+		
+		Scene currentScene = Global.currentScene;
+		
+		m_stage = new Stage(LadybugVilain.WIDTH, LadybugVilain.HEIGHT, true, Scene.batch);
+		Gdx.input.setInputProcessor(m_stage);
+		m_table = new Table();
+		m_table.setFillParent(true);
+		m_table.setPosition(0, 0);
+		m_table.pack();
+		m_stage.addActor(m_table);
+		LabelStyle style = new LabelStyle(new BitmapFont(), com.badlogic.gdx.graphics.Color.WHITE);
+		
+		m_score = new Label("Score", style);
+		
+		m_scoreCell = m_table.add(m_score);
+		m_scoreCell.expandX();
+		m_scoreCell.expandY();
+		m_scoreCell.right();
+		m_scoreCell.top();
+		
+		currentScene.addStage(m_stage);
+	}
+	
+	@Override
+	public void render() {
+		update();
+		super.render();
+		Table.drawDebug(m_stage);
+	}
+	
+	public void update() {
+		m_score.setText("Score : " + String.valueOf(10));
+		m_table.debug();
 	}
 }
