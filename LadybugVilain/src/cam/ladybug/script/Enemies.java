@@ -4,8 +4,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.ladybug.engine.components.Collider;
 import com.ladybug.engine.components.Rigidbody;
 import com.ladybug.engine.components.Script;
+import com.ladybug.engine.game.Global;
 import com.ladybug.engine.game.LayerManager;
 import com.ladybug.vilain.GlobalVilain;
+import com.ladybug.vilain.LadybugVilain;
 
 public class Enemies extends Script {
 
@@ -22,6 +24,10 @@ public class Enemies extends Script {
 	
 	@Override
 	public void update(){
+		if(getObject().getX() > LadybugVilain.WIDTH - 50){
+			( (LadybugVilain)LadybugVilain.instance).reset();
+		}
+		
 		if(touched && getObject().getY() < 0){
 			die();
 		}
@@ -60,7 +66,7 @@ public class Enemies extends Script {
 	}
 		
 	@Override
-	public void OnCollisionEnter(Collider other){
+	public void onCollisionEnter(Collider other){
 		if(other.LAYER == LayerManager.GROUND ){
 			getRigidbody().m_onGround = true;
 			jump();

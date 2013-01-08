@@ -82,7 +82,7 @@ public class PlayerScript extends Script {
 	}
 	
 	@Override
-	public void OnCollisionEnter(Collider other){
+	public void onCollisionEnter(Collider other){
 		if(other.LAYER == LayerManager.GROUND){
 			getRigidbody().m_onGround = true;
 		}

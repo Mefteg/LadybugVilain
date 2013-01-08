@@ -31,7 +31,7 @@ public class ObstacleScript extends Script {
 	}
 	
 	@Override
-	public void OnCollisionEnter(Collider _collider) {
+	public void onCollisionEnter(Collider _collider) {
 	}
 	
 	// retourne la position de l'intersection si deux vecteurs se croisent

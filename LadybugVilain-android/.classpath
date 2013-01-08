@@ -9,6 +9,6 @@
 	<classpathentry exported="true" kind="lib" path="libs/gdx-backend-android.jar" sourcepath="libs/gdx-backend-android-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="/LadybugVilain/libs/bodyeditor-loader.jar" sourcepath="/LadybugVilain/libs/bodyeditor-loader-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="/LadybugVilain/libs/tween-engine-api.jar" sourcepath="/LadybugVilain/libs/tween-engine-api-sources.jar"/>
-	<classpathentry kind="lib" path="/LadybugVilain/libs/ladybug-engine.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/LadybugEngine"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

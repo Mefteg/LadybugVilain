@@ -125,4 +125,27 @@ public class LadybugVilain extends Game2D {
 		m_score.setText("Score : " + String.valueOf(score));
 		//m_table.debug();
 	}
+	
+	
+	public void reset(){
+		Global.currentScene.reset();
+		m_stage = new Stage(LadybugVilain.WIDTH, LadybugVilain.HEIGHT, true, Scene.batch);
+		Gdx.input.setInputProcessor(m_stage);
+		m_table = new Table();
+		m_table.setFillParent(true);
+		m_table.setPosition(0, 0);
+		m_table.pack();
+		m_stage.addActor(m_table);
+		LabelStyle style = new LabelStyle(new BitmapFont(), com.badlogic.gdx.graphics.Color.WHITE);
+		
+		m_score = new Label("Score", style);
+		
+		m_scoreCell = m_table.add(m_score);
+		m_scoreCell.expandX();
+		m_scoreCell.expandY();
+		m_scoreCell.right();
+		m_scoreCell.top();
+		
+		Global.currentScene.addStage(m_stage);
+	}
 }
