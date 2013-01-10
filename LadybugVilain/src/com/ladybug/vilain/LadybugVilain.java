@@ -11,6 +11,7 @@ import cam.ladybug.script.PlayerScript;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -46,7 +47,7 @@ public class LadybugVilain extends Game2D {
 	
 	public LadybugVilain() {
 		super();
-		
+				
 		this.WIDTH = 340;
 		this.HEIGHT = 220;
 		
@@ -92,6 +93,9 @@ public class LadybugVilain extends Game2D {
 	@Override
 	public void create() {
 		super.create();
+
+		Music music = Gdx.audio.newMusic(Gdx.files.internal("data/mariotechno2.mp3"));
+		music.play();
 		
 		Scene currentScene = Global.currentScene;
 		

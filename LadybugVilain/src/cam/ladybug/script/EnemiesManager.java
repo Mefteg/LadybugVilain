@@ -1,6 +1,7 @@
 package cam.ladybug.script;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.ladybug.engine.components.BoxCollider;
 import com.ladybug.engine.components.Script;
@@ -11,7 +12,8 @@ public class EnemiesManager extends Script {
 	
 	//ENEMIES
 	ArrayList<Enemies> m_enemies;
-	int enemyCount, enemyDelay = 200;
+	int enemyCount, enemyDelay;
+	int nextDelay;
 	
 	protected int count = 0;
 	protected int firstApp = 120;
@@ -25,7 +27,12 @@ public class EnemiesManager extends Script {
 		m_popType = enemyType;
 		firstApp = first;
 		enemyDelay = delay;
+		computeNextDelay();
 		createEnemies();
+	}
+	
+	private void computeNextDelay(){
+		nextDelay = (int) ( enemyDelay * ( 0.8 + (Math.random() * ((1.2 - 0.8) + 1))));
 	}
 	
 	@Override
@@ -34,7 +41,8 @@ public class EnemiesManager extends Script {
 		//LUIGI MANAGEMENT
 		if(count > firstApp){
 			enemyCount ++;
-			if(enemyCount > enemyDelay){
+			if(enemyCount > nextDelay){
+				computeNextDelay();
 				enemyCount = 0;
 				m_enemies.get(getFreeEnemy()).pop(-30, 100);
 			}
