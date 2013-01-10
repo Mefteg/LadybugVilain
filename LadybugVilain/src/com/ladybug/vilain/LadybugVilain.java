@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import cam.ladybug.script.Enemies;
 import cam.ladybug.script.EnemiesManager;
+import cam.ladybug.script.EnemiesManager.PopType;
 import cam.ladybug.script.FireScript;
 import cam.ladybug.script.PlayerScript;
 
@@ -59,8 +60,8 @@ public class LadybugVilain extends Game2D {
 		GameObject bg = new GameObject(0,0,"data/bg.png", this.WIDTH, this.HEIGHT,"BG");
 		scene.addObject(bg);
 		//collider on ground
-		GameObject ground = new GameObject(0,20,"Ground");
-		ground.addComponent(new BoxCollider(400,48));
+		GameObject ground = new GameObject(-100,20,"Ground");
+		ground.addComponent(new BoxCollider(500,48));
 		ground.collider.LAYER = LayerManager.GROUND;
 		scene.addObject(ground);
 		
@@ -83,7 +84,8 @@ public class LadybugVilain extends Game2D {
 		scene.addObject(go);
 		
 		GameObject manager = new GameObject();
-		manager.addComponent(new EnemiesManager(scene));
+		manager.addComponent(new EnemiesManager(scene,PopType.MARIO,100,100));
+		manager.addComponent(new EnemiesManager(scene,PopType.LUIGI,300,120));
 		scene.addObject(manager);
 	}
 	
