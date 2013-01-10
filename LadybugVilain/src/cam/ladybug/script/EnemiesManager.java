@@ -58,6 +58,7 @@ public class EnemiesManager extends Script {
 		switch(m_popType){
 			case MARIO : createMarios(); break;
 			case LUIGI : createLuigis(); break;
+			case SUPERMARIO : createSuperMarios();break;
 		}
 	}
 	
@@ -83,6 +84,19 @@ public class EnemiesManager extends Script {
 			luigi.addComponent(e);
 			m_enemies.add(e);
 			m_scene.addObject(luigi);
+			e.setDead(true);
+		}
+	}
+	
+	private void createSuperMarios(){
+		for(int i=0; i<10; i++){
+			//MARIOS
+			GameObject mario = new GameObject(-1000,100,"data/supermario.png",16,32,"SuperMario");
+			mario.addComponent(new BoxCollider(10,32));
+			SuperMario e = new SuperMario();
+			mario.addComponent(e);
+			m_enemies.add(e);
+			m_scene.addObject(mario);
 			e.setDead(true);
 		}
 	}

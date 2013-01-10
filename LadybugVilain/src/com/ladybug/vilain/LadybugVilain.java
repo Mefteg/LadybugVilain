@@ -87,6 +87,7 @@ public class LadybugVilain extends Game2D {
 		GameObject manager = new GameObject();
 		manager.addComponent(new EnemiesManager(scene,PopType.MARIO,100,100));
 		manager.addComponent(new EnemiesManager(scene,PopType.LUIGI,300,120));
+		manager.addComponent(new EnemiesManager(scene,PopType.SUPERMARIO,10,120));
 		scene.addObject(manager);
 	}
 	

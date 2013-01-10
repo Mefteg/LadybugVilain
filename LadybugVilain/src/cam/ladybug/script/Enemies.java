@@ -36,6 +36,7 @@ public class Enemies extends Script {
 	public void pop(float _x, float _y){
 		getObject().setPosition(_x, _y);
 		getRenderer().setFrame(0,0);
+		getRigidbody().setAcceleration(0);
 		getRigidbody().setVelocity(new Vector2(m_velocity,0.0f));	
 		getCollider().enabled = true;
 		touched = false;
